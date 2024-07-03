@@ -30,12 +30,5 @@ public class Bullet_Shooter : MonoBehaviour
 
         // Aplicar una fuerza a la bala en la dirección del punto de origen
         rb.velocity = bulletOrigin.forward * bulletSpeed;
-
-        // Asegurarse de que el sistema de partículas esté activo
-        ParticleSystem particleSystem = bullet.GetComponentInChildren<ParticleSystem>();
-        if (particleSystem != null)
-        {
-            particleSystem.Play();
-        }
     }
 }
