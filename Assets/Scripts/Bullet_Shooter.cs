@@ -22,13 +22,20 @@ public class Bullet_Shooter : MonoBehaviour
         // Instanciar la bala en la posición del punto de origen
         GameObject bullet = Instantiate(bulletPrefab, bulletOrigin.position, bulletOrigin.rotation);
 
-        // Ajustar la rotación de la bala para que apunte horizontalmente
-        bullet.transform.rotation = Quaternion.Euler(110f, 0f, 0f);
+        // Ajustar la rotación de la bala para que apunte horizontalmente con una rotación de 90 grados en X
+        bullet.transform.rotation = Quaternion.Euler(100f, 0f, 0f);
 
         // Obtener el Rigidbody de la bala para aplicar la física
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
         // Aplicar una fuerza a la bala en la dirección del punto de origen
         rb.velocity = bulletOrigin.forward * bulletSpeed;
+
+        // Asegurarse de que el sistema de partículas esté activo
+        ParticleSystem particleSystem = bullet.GetComponentInChildren<ParticleSystem>();
+        if (particleSystem != null)
+        {
+            particleSystem.Play();
+        }
     }
 }
