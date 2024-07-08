@@ -8,6 +8,12 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Enemy_controller enemy = collision.gameObject.GetComponent<Enemy_controller>();
+        if (enemy != null)
+        {
+            // Call the enemy's TakeDamage function
+            enemy.TakeDamage(10);
+        }
         // Instanciar la explosión en la posición de la bala
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
