@@ -34,15 +34,14 @@ public class Enemy_controller : MonoBehaviour
         Destroy(gameObject); // Destruimos el objeto del enemigo al morir
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Player_health playerHealth = other.GetComponent<Player_health>();
+            Player_health playerHealth = collision.gameObject.GetComponent<Player_health>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-                Die(); // Destruimos al enemigo después de hacer daño al jugador
             }
         }
     }

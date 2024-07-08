@@ -30,7 +30,7 @@ public class Contador_Enemigos : MonoBehaviour
 
     void UpdateKillCountText()
     {
-        killCountText.text = "Enemies " + enemyKillCount + "/20";
+        killCountText.text = "Enemies " + enemyKillCount + "/3";
     }
 
     void GameWon()
